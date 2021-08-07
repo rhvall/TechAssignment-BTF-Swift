@@ -11,6 +11,10 @@
 		2C31501826BEA0B400E95CBF /* Invoice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */; };
 		2C31501926BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */; };
 		2C31501A26BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */; };
+		2C31502126BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501F26BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift */; };
+		2C31502226BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501F26BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift */; };
+		2C31502326BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31502026BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift */; };
+		2C31502426BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31502026BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift */; };
 		2C3B27F726BE69230051488C /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B27F526BE69230051488C /* Item+CoreDataClass.swift */; };
 		2C3B27F826BE69230051488C /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */; };
 		2C3F5CD126BD09BE0099EABC /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F5CD026BD09BE0099EABC /* CoreDataTests.swift */; };
@@ -22,7 +26,7 @@
 		2C507CC726BE77D900D06069 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B27F526BE69230051488C /* Item+CoreDataClass.swift */; };
 		2C507CCA26BE77DC00D06069 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */; };
 		2C507CD026BE78A700D06069 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F5CB626BD09BC0099EABC /* PersistenceController.swift */; };
-		2C55411626BE4201008D37AC /* purchase_orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C55411526BE4201008D37AC /* purchase_orders.json */; };
+		2C55411626BE4201008D37AC /* purchase_order.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C55411526BE4201008D37AC /* purchase_order.json */; };
 		2C62495326BE80F700DB22C9 /* CDModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F5CB226BD09BC0099EABC /* CDModel.xcdatamodeld */; };
 		2C62496426BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */; };
 		2C62496526BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */; };
@@ -43,6 +47,8 @@
 /* Begin PBXFileReference section */
 		2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C31501F26BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase_Order+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C31502026BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase_Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C3B27F526BE69230051488C /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C3F5CB326BD09BC0099EABC /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -55,7 +61,7 @@
 		2C3F5CCC26BD09BE0099EABC /* Tests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3F5CD026BD09BE0099EABC /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		2C3F5CD226BD09BE0099EABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C55411526BE4201008D37AC /* purchase_orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = purchase_orders.json; sourceTree = "<group>"; };
+		2C55411526BE4201008D37AC /* purchase_order.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = purchase_order.json; sourceTree = "<group>"; };
 		2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +135,7 @@
 		2C55411426BE4201008D37AC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2C55411526BE4201008D37AC /* purchase_orders.json */,
+				2C55411526BE4201008D37AC /* purchase_order.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -145,6 +151,8 @@
 				2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */,
 				2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */,
 				2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */,
+				2C31501F26BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift */,
+				2C31502026BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -237,7 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C55411626BE4201008D37AC /* purchase_orders.json in Resources */,
+				2C55411626BE4201008D37AC /* purchase_order.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,11 +261,13 @@
 				2C3B27F726BE69230051488C /* Item+CoreDataClass.swift in Sources */,
 				2C62496426BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C3F5CE026BD09BE0099EABC /* BttrflCDApp.swift in Sources */,
+				2C31502126BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift in Sources */,
 				2C62496626BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */,
 				2C3F5CE426BD09BE0099EABC /* PersistenceController.swift in Sources */,
 				2C3F5CDE26BD09BE0099EABC /* CDModel.xcdatamodeld in Sources */,
 				2C31501926BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */,
 				2C3F5CE226BD09BE0099EABC /* ContentView.swift in Sources */,
+				2C31502326BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +276,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C507CCA26BE77DC00D06069 /* Item+CoreDataProperties.swift in Sources */,
+				2C31502226BEA7FA00E95CBF /* Purchase_Order+CoreDataClass.swift in Sources */,
 				2C62496726BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */,
 				2C62495326BE80F700DB22C9 /* CDModel.xcdatamodeld in Sources */,
 				2C31501A26BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */,
 				2C507CC726BE77D900D06069 /* Item+CoreDataClass.swift in Sources */,
+				2C31502426BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift in Sources */,
 				2C3F5CD126BD09BE0099EABC /* CoreDataTests.swift in Sources */,
 				2C62496526BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C507CD026BE78A700D06069 /* PersistenceController.swift in Sources */,

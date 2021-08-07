@@ -1,5 +1,4 @@
-[
-  {
+{
     "id": 1,
     "supplier_id": 11,
     "purchase_order_number": "200",
@@ -91,5 +90,4 @@
     "approval_status": 1,
     "preferred_delivery_date": "2020-05-07T09:32:28.213Z",
     "delivery_note": "string"
-  }
-]
+}

@@ -33,7 +33,6 @@ enum XCTestsError: Error
 
 class CoreDataTests: XCTestCase
 {
-    private var purchaseOrder: [[String : Any]] = []
     private var container: NSPersistentContainer!
     private let cdModelName = "CDModel"
     
@@ -46,28 +45,12 @@ class CoreDataTests: XCTestCase
         }
         
         container = dummyContainer
-        
-        guard let res = try? loadJSONFromBundle("purchase_orders", "json") else
-        {
-            XCTFail("Could not load JSON");
-            return
-        }
-        
-        guard let po = res as? [[String : Any]] else
-        {
-            XCTFail("JSON did not match Dictionary");
-            return
-        }
-        
-        purchaseOrder = po
-        
         continueAfterFailure = false
     }
 
     override func tearDownWithError() throws
     {
         container = nil
-        purchaseOrder = []
     }
     
     func testJSONParsingForItem() throws
@@ -177,13 +160,33 @@ class CoreDataTests: XCTestCase
     
     func testJSONParsingForPO()
     {
-//        guard let items = purchaseOrder[0]["items"] as? [[String : Any]] else {
-//            XCTFail("Items were not found")
-//            return
-//        }
+        let testBundle = Bundle(for: type(of: self))
+        
+        guard let dataPath = testBundle.url(forResource: "purchase_order", withExtension: "json") else
+        {
+            XCTFail("No JSON file located")
+            return
+        }
+        
+        do {
+            let str = try String(contentsOf: dataPath)
+            decodeTestJSON(type: Purchase_Order.self, str: str, cntx: container.viewContext) { itemResult in
+                XCTAssertNotNil(itemResult, "Item parsing should not be nil")
+                XCTAssertNotNil(itemResult.issue_date, "Item ´issue_date´ property should not be nil")
+                XCTAssertNotNil(itemResult.sent_date, "Item ´sent_date´ property should not be nil")
+                XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
+                XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
+                print(itemResult)
+            }
+        }
+        catch
+        {
+            XCTFail("Reading JSON string not possible \(error)")
+        }
     }
     
-    func decodeTestJSON<T>(type: T.Type, str: String, cntx: NSManagedObjectContext, tests: (T)->Void) where T : Decodable
+    func decodeTestJSON<T>(type: T.Type, str: String, cntx: NSManagedObjectContext, tests: (T)->Void)
+        where T : Decodable
     {
         let decoder = JSONDecoder(context: cntx)
         do {
@@ -195,26 +198,6 @@ class CoreDataTests: XCTestCase
         catch
         {
             XCTFail("Decoding not possible \(error)")
-        }
-    }
-    
-    func loadJSONFromBundle(_ fileName: String, _ fileExtension: String) throws -> Any?
-    {
-        let testBundle = Bundle(for: type(of: self))
-        
-        guard let dataPath = testBundle.url(forResource: fileName, withExtension: fileExtension) else
-        {
-            throw XCTestsError.fileNotFound
-        }
-        
-        do {
-            let data = try Data(contentsOf: dataPath)
-            let jsonObj = try? JSONSerialization.jsonObject(with: data, options: [])
-            return jsonObj
-        }
-        catch
-        {
-            throw XCTestsError.invalidFile(error)
         }
     }
     

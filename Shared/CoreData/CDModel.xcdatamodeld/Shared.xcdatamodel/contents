@@ -26,7 +26,7 @@
         <relationship name="cancelled_purchase_orders" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase_Order" inverseName="cancelations" inverseEntity="Purchase_Order"/>
         <relationship name="puchase_orders" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase_Order" inverseName="items" inverseEntity="Purchase_Order"/>
     </entity>
-    <entity name="Purchase_Order" representedClassName=".Purchase_Order" syncable="YES" codeGenerationType="class">
+    <entity name="Purchase_Order" representedClassName=".Purchase_Order" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="approval_status" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="delivery_note" optional="YES" attributeType="String"/>
