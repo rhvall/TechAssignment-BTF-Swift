@@ -37,6 +37,7 @@ public class Invoice: NSManagedObject, Decodable
         case receipt_sent_date
         case received_status
         case transient_identifier
+        case receipts
     }
 
     required convenience public init(from decoder: Decoder) throws
@@ -58,5 +59,6 @@ public class Invoice: NSManagedObject, Decodable
         receipt_sent_date = try? values.decode(Date.self, forKey: .receipt_sent_date)
         received_status = try values.decode(Int16.self, forKey: .received_status)
         transient_identifier = try values.decode(String.self, forKey: .transient_identifier)
+        receipts = try values.decode(Set<Receipt>.self, forKey: .receipts) as NSSet
     }
 }

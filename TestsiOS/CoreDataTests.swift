@@ -155,6 +155,7 @@ class CoreDataTests: XCTestCase
             XCTAssertNotNil(itemResult.receipt_sent_date, "Item ´receipt_sent_date´ property should not be nil")
             XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
             XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
+            XCTAssertNotNil(itemResult.receipts, "Item ´receipts´ property should not be nil")
         }
     }
     
@@ -170,13 +171,17 @@ class CoreDataTests: XCTestCase
         
         do {
             let str = try String(contentsOf: dataPath)
-            decodeTestJSON(type: Purchase_Order.self, str: str, cntx: container.viewContext) { itemResult in
-                XCTAssertNotNil(itemResult, "Item parsing should not be nil")
-                XCTAssertNotNil(itemResult.issue_date, "Item ´issue_date´ property should not be nil")
-                XCTAssertNotNil(itemResult.sent_date, "Item ´sent_date´ property should not be nil")
-                XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
-                XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
-                print(itemResult)
+            decodeTestJSON(type: [Purchase_Order].self, str: str, cntx: container.viewContext) { results in
+                results.forEach { itemResult in
+                    XCTAssertNotNil(itemResult, "Item parsing should not be nil")
+                    XCTAssertNotNil(itemResult.issue_date, "Item ´issue_date´ property should not be nil")
+                    XCTAssertNotNil(itemResult.sent_date, "Item ´sent_date´ property should not be nil")
+                    XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
+                    XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
+                    XCTAssertNotNil(itemResult.cancellations, "Item ´cancelations´ property should not be nil")
+                    XCTAssertNotNil(itemResult.invoices, "Item ´invoices´ property should not be nil")
+                    XCTAssertNotNil(itemResult.items, "Item ´items´ property should not be nil")
+                }
             }
         }
         catch

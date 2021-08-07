@@ -44,26 +44,26 @@ extension Purchase_Order
     @NSManaged public var server_timestamp: Int64
     @NSManaged public var status: Int16
     @NSManaged public var supplier_id: Int32
-    @NSManaged public var cancelations: NSSet?
+    @NSManaged public var cancellations: NSSet?
     @NSManaged public var invoices: NSSet?
     @NSManaged public var items: NSSet?
 
 }
 
-// MARK: Generated accessors for cancelations
+// MARK: Generated accessors for Cancellations
 extension Purchase_Order
 {
-    @objc(addCancelationsObject:)
-    @NSManaged public func addToCancelations(_ value: Item)
+    @objc(addCancellationsObject:)
+    @NSManaged public func addToCancellations(_ value: Item)
 
-    @objc(removeCancelationsObject:)
-    @NSManaged public func removeFromCancelations(_ value: Item)
+    @objc(removeCancellationsObject:)
+    @NSManaged public func removeFromCancellations(_ value: Item)
 
-    @objc(addCancelations:)
-    @NSManaged public func addToCancelations(_ values: NSSet)
+    @objc(addCancellations:)
+    @NSManaged public func addToCancellations(_ values: NSSet)
 
-    @objc(removeCancelations:)
-    @NSManaged public func removeFromCancelations(_ values: NSSet)
+    @objc(removeCancellations:)
+    @NSManaged public func removeFromCancellations(_ values: NSSet)
 }
 
 // MARK: Generated accessors for invoices

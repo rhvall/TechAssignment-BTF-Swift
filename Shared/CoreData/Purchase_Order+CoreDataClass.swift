@@ -41,7 +41,7 @@ public class Purchase_Order: NSManagedObject, Decodable
         case server_timestamp
         case status
         case supplier_id
-        case cancelations
+        case cancellations
         case invoices
         case items
     }
@@ -70,5 +70,8 @@ public class Purchase_Order: NSManagedObject, Decodable
         server_timestamp = try values.decode(Int64.self, forKey: .server_timestamp)
         status = try values.decode(Int16.self, forKey: .status)
         supplier_id = try values.decode(Int32.self, forKey: .supplier_id)
+        cancellations = try values.decode(Set<Item>.self, forKey: .cancellations) as NSSet
+        invoices = try values.decode(Set<Invoice>.self, forKey: .invoices) as NSSet
+        items = try values.decode(Set<Item>.self, forKey: .items) as NSSet
     }
 }

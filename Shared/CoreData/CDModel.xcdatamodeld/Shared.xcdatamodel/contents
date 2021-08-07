@@ -23,7 +23,7 @@
         <attribute name="product_item_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="transient_identifier" optional="YES" attributeType="String"/>
-        <relationship name="cancelled_purchase_orders" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase_Order" inverseName="cancelations" inverseEntity="Purchase_Order"/>
+        <relationship name="cancelled_purchase_orders" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase_Order" inverseName="cancellations" inverseEntity="Purchase_Order"/>
         <relationship name="puchase_orders" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase_Order" inverseName="items" inverseEntity="Purchase_Order"/>
     </entity>
     <entity name="Purchase_Order" representedClassName=".Purchase_Order" syncable="YES">
@@ -41,7 +41,7 @@
         <attribute name="server_timestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="supplier_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="cancelations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="cancelled_purchase_orders" inverseEntity="Item"/>
+        <relationship name="cancellations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="cancelled_purchase_orders" inverseEntity="Item"/>
         <relationship name="invoices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Invoice" inverseName="purchase_orders" inverseEntity="Invoice"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="puchase_orders" inverseEntity="Item"/>
     </entity>
