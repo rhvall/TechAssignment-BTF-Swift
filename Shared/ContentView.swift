@@ -18,8 +18,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 // //////////////////////////////////////////////////////////
+
 import SwiftUI
 import CoreData
+
+struct VerticalLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack {
+            configuration.icon
+            configuration.title
+        }
+    }
+}
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -30,22 +40,32 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        Label("SwiftUI Tutorials", systemImage: "book.fill")
         List {
+//--------------------------------------
+            Label {
+                Text("Technical Assestment")
+            } icon: {
+                Image(systemName: "keyboard")
+                    .foregroundColor(Color.blue)
+            }
+            .labelStyle(VerticalLabelStyle())
+            .font(.largeTitle)
+//--------------------------------------
             ForEach(items) { item in
                 Text("Item at \(item.timestamp!, formatter: itemFormatter)")
             }
             .onDelete(perform: deleteItems)
+//--------------------------------------
+            Button(action: addItem) {
+                Label("Add Item", systemImage: "plus")
+            }
         }
         .toolbar {
             #if os(iOS)
             EditButton()
             #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
         }
+//--------------------------------------
     }
 
     private func addItem() {
