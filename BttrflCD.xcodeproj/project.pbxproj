@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C31501726BEA0B400E95CBF /* Invoice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */; };
+		2C31501826BEA0B400E95CBF /* Invoice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */; };
+		2C31501926BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */; };
+		2C31501A26BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */; };
 		2C3B27F726BE69230051488C /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B27F526BE69230051488C /* Item+CoreDataClass.swift */; };
 		2C3B27F826BE69230051488C /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */; };
 		2C3F5CD126BD09BE0099EABC /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F5CD026BD09BE0099EABC /* CoreDataTests.swift */; };
@@ -37,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Invoice+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C3B27F526BE69230051488C /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C3F5CB326BD09BC0099EABC /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -137,6 +143,8 @@
 				2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */,
 				2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */,
 				2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */,
+				2C31501526BEA0B400E95CBF /* Invoice+CoreDataClass.swift */,
+				2C31501626BEA0B400E95CBF /* Invoice+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -241,12 +249,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3B27F826BE69230051488C /* Item+CoreDataProperties.swift in Sources */,
+				2C31501726BEA0B400E95CBF /* Invoice+CoreDataClass.swift in Sources */,
 				2C3B27F726BE69230051488C /* Item+CoreDataClass.swift in Sources */,
 				2C62496426BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C3F5CE026BD09BE0099EABC /* BttrflCDApp.swift in Sources */,
 				2C62496626BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */,
 				2C3F5CE426BD09BE0099EABC /* PersistenceController.swift in Sources */,
 				2C3F5CDE26BD09BE0099EABC /* CDModel.xcdatamodeld in Sources */,
+				2C31501926BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */,
 				2C3F5CE226BD09BE0099EABC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,10 +268,12 @@
 				2C507CCA26BE77DC00D06069 /* Item+CoreDataProperties.swift in Sources */,
 				2C62496726BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */,
 				2C62495326BE80F700DB22C9 /* CDModel.xcdatamodeld in Sources */,
+				2C31501A26BEA0B400E95CBF /* Invoice+CoreDataProperties.swift in Sources */,
 				2C507CC726BE77D900D06069 /* Item+CoreDataClass.swift in Sources */,
 				2C3F5CD126BD09BE0099EABC /* CoreDataTests.swift in Sources */,
 				2C62496526BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C507CD026BE78A700D06069 /* PersistenceController.swift in Sources */,
+				2C31501826BEA0B400E95CBF /* Invoice+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

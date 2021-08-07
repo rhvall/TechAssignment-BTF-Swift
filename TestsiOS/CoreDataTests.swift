@@ -130,8 +130,48 @@ class CoreDataTests: XCTestCase
         decodeTestJSON(type: Receipt.self, str: str, cntx: container.viewContext) { itemResult in
             XCTAssertNotNil(itemResult, "Item parsing should not be nil")
             XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
-            XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should not be true")
+            XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
             XCTAssertNotNil(itemResult.transient_identifier, "Item ´transient_identifier´ property should not be nil")
+        }
+    }
+    
+    func testJSONParsingForInvoice()
+    {
+        let str = """
+        {
+            "id": 11,
+            "invoice_number": "101",
+            "received_status": 1,
+            "created": "2020-05-07T09:32:28.213Z",
+            "last_updated_user_entity_id": 10,
+            "transient_identifier": "tid",
+            "receipts": [
+            {
+                "id": 110,
+                "product_item_id": 110,
+                "received_quantity": 20,
+                "created": "2020-05-07T09:32:28.213Z",
+                "last_updated_user_entity_id": 10,
+                "transient_identifier": "tid2",
+                "sent_date": "2020-05-07T09:32:28.213Z",
+                "active_flag": true,
+                "last_updated": "2020-05-07T09:32:28.213Z"
+            }
+            ],
+            "receipt_sent_date": "2020-05-07T09:32:28.213Z",
+            "active_flag": true,
+            "last_updated": "2020-05-07T09:32:28.213Z"
+        }
+        """
+        
+        decodeTestJSON(type: Invoice.self, str: str, cntx: container.viewContext) { itemResult in
+            XCTAssertNotNil(itemResult, "Item parsing should not be nil")
+            XCTAssertNotNil(itemResult.created, "Item ´created´ property should not be nil")
+            XCTAssertNotNil(itemResult.invoice_number, "Item ´invoice_number´ property should not be nil")
+            XCTAssertEqual(itemResult.transient_identifier, "tid", "Item ´transient_identifier´ property should be tid")
+            XCTAssertNotNil(itemResult.receipt_sent_date, "Item ´receipt_sent_date´ property should not be nil")
+            XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
+            XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
         }
     }
     

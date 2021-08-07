@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H1323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="CDModel">
-    <entity name="Invoice" representedClassName="Invoice" syncable="YES" codeGenerationType="class">
+    <entity name="Invoice" representedClassName="Invoice" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="invoice_number" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="invoice_number" optional="YES" attributeType="String"/>
         <attribute name="last_updated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="last_updated_user_entity_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="receipt_sent_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
