@@ -35,9 +35,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.last_updated, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Purchase_Order.id, ascending: false)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var purchaseOrder: FetchedResults<Purchase_Order>
 
     var body: some View {
         List {
@@ -51,13 +51,16 @@ struct ContentView: View {
             .labelStyle(VerticalLabelStyle())
             .font(.largeTitle)
 //--------------------------------------
-            ForEach(items) { item in
-                Text("Item at \(item.last_updated!, formatter: itemFormatter)")
+            ForEach(purchaseOrder) { po in
+                VStack {
+                    Text("PO ID: \(po.id) with #\(po.items!.count) items")
+                    Text("Last update: \(po.last_updated!, formatter: itemFormatter)")
+                }
             }
-            .onDelete(perform: deleteItems)
+            .onDelete(perform: deletePO)
 //--------------------------------------
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+            Button(action: addPO) {
+                Label("Add Purchase Order", systemImage: "plus")
             }
         }
         .toolbar {
@@ -67,11 +70,13 @@ struct ContentView: View {
         }
 //--------------------------------------
     }
-
-    private func addItem() {
+    
+    private func addPO() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.last_updated = Date()
+            let poBase = Purchase_Order(context: viewContext)
+            let lastID = Int32(purchaseOrder.first?.id ?? 0)
+            poBase.id = lastID + 1
+            poBase.last_updated = Date()
 
             do {
                 try viewContext.save()
@@ -84,9 +89,9 @@ struct ContentView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deletePO(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { purchaseOrder[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
