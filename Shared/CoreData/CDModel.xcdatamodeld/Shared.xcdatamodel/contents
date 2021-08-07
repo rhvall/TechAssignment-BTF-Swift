@@ -45,7 +45,7 @@
         <relationship name="invoices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Invoice" inverseName="purchase_orders" inverseEntity="Invoice"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="puchase_orders" inverseEntity="Item"/>
     </entity>
-    <entity name="Receipt" representedClassName="Receipt" syncable="YES" codeGenerationType="class">
+    <entity name="Receipt" representedClassName="Receipt" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

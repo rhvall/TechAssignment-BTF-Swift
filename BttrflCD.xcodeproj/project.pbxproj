@@ -20,6 +20,10 @@
 		2C507CD026BE78A700D06069 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F5CB626BD09BC0099EABC /* PersistenceController.swift */; };
 		2C55411626BE4201008D37AC /* purchase_orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C55411526BE4201008D37AC /* purchase_orders.json */; };
 		2C62495326BE80F700DB22C9 /* CDModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F5CB226BD09BC0099EABC /* CDModel.xcdatamodeld */; };
+		2C62496426BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */; };
+		2C62496526BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */; };
+		2C62496626BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */; };
+		2C62496726BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,8 @@
 		2C3F5CD026BD09BE0099EABC /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		2C3F5CD226BD09BE0099EABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C55411526BE4201008D37AC /* purchase_orders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = purchase_orders.json; sourceTree = "<group>"; };
+		2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,8 @@
 				2C3F5CB626BD09BC0099EABC /* PersistenceController.swift */,
 				2C3B27F526BE69230051488C /* Item+CoreDataClass.swift */,
 				2C3B27F626BE69230051488C /* Item+CoreDataProperties.swift */,
+				2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */,
+				2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -234,7 +242,9 @@
 			files = (
 				2C3B27F826BE69230051488C /* Item+CoreDataProperties.swift in Sources */,
 				2C3B27F726BE69230051488C /* Item+CoreDataClass.swift in Sources */,
+				2C62496426BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C3F5CE026BD09BE0099EABC /* BttrflCDApp.swift in Sources */,
+				2C62496626BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */,
 				2C3F5CE426BD09BE0099EABC /* PersistenceController.swift in Sources */,
 				2C3F5CDE26BD09BE0099EABC /* CDModel.xcdatamodeld in Sources */,
 				2C3F5CE226BD09BE0099EABC /* ContentView.swift in Sources */,
@@ -246,9 +256,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C507CCA26BE77DC00D06069 /* Item+CoreDataProperties.swift in Sources */,
+				2C62496726BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */,
 				2C62495326BE80F700DB22C9 /* CDModel.xcdatamodeld in Sources */,
 				2C507CC726BE77D900D06069 /* Item+CoreDataClass.swift in Sources */,
 				2C3F5CD126BD09BE0099EABC /* CoreDataTests.swift in Sources */,
+				2C62496526BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C507CD026BE78A700D06069 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,10 +448,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rv.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "BttrflCD (iOS)";
+				TEST_TARGET_NAME = "BttrflCD-iOS";
 			};
 			name = Debug;
 		};
@@ -457,10 +470,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rv.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "BttrflCD (iOS)";
+				TEST_TARGET_NAME = "BttrflCD-iOS";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

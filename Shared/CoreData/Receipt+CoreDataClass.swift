@@ -1,6 +1,6 @@
 //
-//  Item+CoreDataClass.swift
-//  BttrflCD (iOS)
+//  Receipt+CoreDataClass.swift
+//  BttrflCD
 //
 //  Created by R on 8/7/21.
 //
@@ -23,8 +23,8 @@
 import Foundation
 import CoreData
 
-@objc(Item)
-public class Item: NSManagedObject, Decodable
+@objc(Receipt)
+public class Receipt: NSManagedObject, Decodable
 {
     private enum CodingKeys: String, CodingKey
     {
@@ -33,14 +33,12 @@ public class Item: NSManagedObject, Decodable
         case id
         case last_updated
         case last_updated_user_entity_id
-        case ordered_quantity
         case product_item_id
-        case quantity
+        case received_quantity
+        case sent_date
         case transient_identifier
-        case cancelled_purchase_orders
-        case puchase_orders
     }
-
+    
     required convenience public init(from decoder: Decoder) throws
     {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else
@@ -48,17 +46,17 @@ public class Item: NSManagedObject, Decodable
             fatalError("NSManagedObjectContext is missing")
         }
         
-        let entity = NSEntityDescription.entity(forEntityName: "Item", in: context)!
+        let entity = NSEntityDescription.entity(forEntityName: "Receipt", in: context)!
         self.init(entity: entity, insertInto: context)
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        active_flag = (try? values.decode(Bool.self, forKey: .active_flag)) ?? false;
+        active_flag = try values.decode(Bool.self, forKey: .active_flag)
         created = try? values.decode(Date.self, forKey: .created)
         id = try values.decode(Int32.self, forKey: .id)
         last_updated = try? values.decode(Date.self, forKey: .last_updated)
         last_updated_user_entity_id = try values.decode(Int32.self, forKey: .last_updated_user_entity_id)
-        ordered_quantity = (try? values.decode(Int32.self, forKey: .ordered_quantity)) ?? 0
         product_item_id = try values.decode(Int32.self, forKey: .product_item_id)
-        quantity = (try? values.decode(Int32.self, forKey: .quantity)) ?? 0
+        received_quantity = try values.decode(Int32.self, forKey: .received_quantity);
+        sent_date = try? values.decode(Date.self, forKey: .sent_date)
         transient_identifier = try values.decode(String.self, forKey: .transient_identifier)
     }
 }

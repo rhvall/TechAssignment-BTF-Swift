@@ -66,18 +66,14 @@ class CoreDataTests: XCTestCase
 
     override func tearDownWithError() throws
     {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        container = nil
+        purchaseOrder = []
     }
     
     func testJSONParsingForItem() throws
     {
-//        guard let items = purchaseOrder[0]["items"] as? [[String : Any]] else {
-//            XCTFail("Items were not found")
-//            return
-//        }
-        
         let str = """
-            {
+        {
             "id": 1,
             "product_item_id": 1,
             "quantity": 10,
@@ -85,21 +81,81 @@ class CoreDataTests: XCTestCase
             "transient_identifier": "tid",
             "active_flag": true,
             "last_updated": "2020-05-07T09:32:28.213Z"
-            }
+        }
         """
-
-        let decoder = JSONDecoder(context: container.viewContext)
-        do {
-            let dta = str.data(using: .utf8)!
-            let itemResult = try decoder.decode(Item.self, from: dta)
+        
+        let str2 = """
+        {
+            "id": 1,
+            "product_item_id": 2,
+            "ordered_quantity": 11,
+            "last_updated_user_entity_id": 0,
+            "created": "2020-05-07T09:32:28.213Z",
+            "transient_identifier": "string"
+        }
+        """
+        
+        decodeTestJSON(type: Item.self, str: str, cntx: container.viewContext) { itemResult in
             XCTAssertNotNil(itemResult, "Item parsing should not be nil")
             XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
+            XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should be true")
+            XCTAssertNotNil(itemResult.transient_identifier, "Item ´transient_identifier´ property should not be nil")
+        }
+        
+        decodeTestJSON(type: Item.self, str: str2, cntx: container.viewContext) { itemResult in
+            XCTAssertNotNil(itemResult, "Item parsing should not be nil")
+            XCTAssertNil(itemResult.last_updated, "Item ´last_updated´ property should be nil")
+            XCTAssertFalse(itemResult.active_flag, "Item ´active_flag´ property should not be true")
+            XCTAssertNotNil(itemResult.created, "Item ´created´ property should not be nil")
+            XCTAssertEqual(itemResult.transient_identifier, "string", "Item ´transient_identifier´ property should be ´string´")
+        }
+    }
+    
+    func testJSONParsingForReceipt()
+    {
+        let str = """
+        {
+            "id": 110,
+            "product_item_id": 110,
+            "received_quantity": 20,
+            "created": "2020-05-07T09:32:28.213Z",
+            "last_updated_user_entity_id": 10,
+            "transient_identifier": "tid2",
+            "sent_date": "2020-05-07T09:32:28.213Z",
+            "active_flag": true,
+            "last_updated": "2020-05-07T09:32:28.213Z"
+        }
+        """
+        
+        decodeTestJSON(type: Receipt.self, str: str, cntx: container.viewContext) { itemResult in
+            XCTAssertNotNil(itemResult, "Item parsing should not be nil")
+            XCTAssertNotNil(itemResult.last_updated, "Item ´last_updated´ property should not be nil")
+            XCTAssertTrue(itemResult.active_flag, "Item ´active_flag´ property should not be true")
+            XCTAssertNotNil(itemResult.transient_identifier, "Item ´transient_identifier´ property should not be nil")
+        }
+    }
+    
+    func testJSONParsingForPO()
+    {
+//        guard let items = purchaseOrder[0]["items"] as? [[String : Any]] else {
+//            XCTFail("Items were not found")
+//            return
+//        }
+    }
+    
+    func decodeTestJSON<T>(type: T.Type, str: String, cntx: NSManagedObjectContext, tests: (T)->Void) where T : Decodable
+    {
+        let decoder = JSONDecoder(context: cntx)
+        do {
+            let dta = str.data(using: .utf8)!
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+            let itemResult = try decoder.decode(type, from: dta)
+            tests(itemResult);
         }
         catch
         {
             XCTFail("Decoding not possible \(error)")
         }
-        
     }
     
     func loadJSONFromBundle(_ fileName: String, _ fileExtension: String) throws -> Any?
