@@ -1,0 +1,63 @@
+//
+//  Item+CoreDataClass.swift
+//  BttrflCD (iOS)
+//
+//  Created by R on 8/7/21.
+//
+//
+
+// //////////////////////////////////////////////////////////
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 or later.
+//
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+// //////////////////////////////////////////////////////////
+
+import Foundation
+import CoreData
+
+@objc(Item)
+public class Item: NSManagedObject, Decodable
+{
+    private enum CodingKeys: String, CodingKey
+    {
+        case active_flag
+        case created
+        case id
+        case last_updated
+        case last_updated_user_entity_id
+        case ordered_quantity
+        case product_item_id
+        case quantity
+        case transient_identifier
+        case cancelled_purchase_orders
+        case puchase_orders
+    }
+
+    required convenience public init(from decoder: Decoder) throws
+    {
+        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else {
+            fatalError("NSManagedObjectContext is missing")
+        }
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Item", in: context)!
+        self.init(entity: entity, insertInto: context)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        active_flag = try values.decode(Bool.self, forKey: .active_flag)
+        created = try? values.decode(Date.self, forKey: .created)
+        id = try values.decode(Int32.self, forKey: .id)
+        last_updated = try? values.decode(Date.self, forKey: .last_updated)
+        last_updated_user_entity_id = try values.decode(Int32.self, forKey: .last_updated_user_entity_id)
+        ordered_quantity = (try? values.decode(Int32.self, forKey: .ordered_quantity)) ?? 0;
+        product_item_id = try values.decode(Int32.self, forKey: .product_item_id)
+        quantity = try values.decode(Int32.self, forKey: .quantity)
+        transient_identifier = try values.decode(String.self, forKey: .transient_identifier)
+    }
+}

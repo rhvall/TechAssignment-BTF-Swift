@@ -23,7 +23,8 @@
 import SwiftUI
 
 @main
-struct BttrflCDApp: App {
+struct BttrflCDApp: App
+{
     let persistenceController = PersistenceController.shared
     @Environment(\.scenePhase) var scenePhase
     

@@ -35,7 +35,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.last_updated, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
 
@@ -52,7 +52,7 @@ struct ContentView: View {
             .font(.largeTitle)
 //--------------------------------------
             ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                Text("Item at \(item.last_updated!, formatter: itemFormatter)")
             }
             .onDelete(perform: deleteItems)
 //--------------------------------------
@@ -71,7 +71,7 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            newItem.last_updated = Date()
 
             do {
                 try viewContext.save()
