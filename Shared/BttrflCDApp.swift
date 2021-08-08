@@ -22,19 +22,42 @@
 
 import SwiftUI
 
+enum AppPageList
+{
+    case MainPage
+    case DetailPage
+    case EditPage
+}
+
+final class AppEnvironmentData: ObservableObject
+{
+    let sharedPC = PersistenceController.shared
+    @Published var currentPage : AppPageList? = .MainPage
+    @Environment(\.scenePhase) var scenePhase
+}
+
 @main
 struct BttrflCDApp: App
 {
-    let persistenceController = PersistenceController.shared
-    @Environment(\.scenePhase) var scenePhase
+    @StateObject private var appEnv = AppEnvironmentData()
     
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+    var body: some Scene
+    {
+        WindowGroup
+        {
+            NavigationView
+            {
+                ContentView()
+                    .environmentObject(appEnv)
+                    // It needs to explicitely set the MOC to avoid issues
+                    .environment(\.managedObjectContext, appEnv.sharedPC.context())
+                    .navigationBarTitle(Text("Technical Assestment"), displayMode: .large)
+            }
+            // https://stackoverflow.com/questions/65316497/swiftui-navigationview-navigationbartitle-layoutconstraints-issue
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .onChange(of: scenePhase) { _ in
-            persistenceController.save();
+        .onChange(of: appEnv.scenePhase) { _ in
+            appEnv.sharedPC.save();
         }
     }
 }
