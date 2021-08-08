@@ -55,6 +55,11 @@ struct ContentView: View
             EditButton()
             #endif
         }
+        .onAppear {
+            if (purchaseOrder.count == 0) {
+                ContentLoader.loadJSONFromNetwork(env: appEnv)
+            }
+        }
 //--------------------------------------
     }
 
