@@ -26,30 +26,53 @@ struct PODetailView: View
 {
     @State var poObj: Purchase_Order
     
-    private var poItems: Array<Item> {
-        guard let its = poObj.items else {
+    private var poItems: Array<Item>
+    {
+        guard let its = poObj.items else
+        {
             return []
         }
         
         return its.allObjects as! Array<Item>
+    }
+    
+    private var poInvoice: Array<Invoice>
+    {
+        guard let its = poObj.invoices else
+        {
+            return []
+        }
+        
+        return its.allObjects as! Array<Invoice>
     }
 
     var body: some View
     {
         List
         {
-            Group {
+            Group
+            {
                 POApprovalStatus(poObj: $poObj)
                 POKeyDates(poObj: $poObj)
                 POStringData(poObj: $poObj)
             }
-            Divider().background(Color.blue)
-            Group {
-                if (poItems.count > 0) { POItems(items:poItems) }
+            Group
+            {
+                if (poInvoice.count > 0 ) {
+                    Divider().background(Color.blue)
+                    POInvoices(invoices: poInvoice)
+                }
+            }
+            Group
+            {
+                if (poItems.count > 0)
+                {
+                    Divider().background(Color.blue)
+                    POItems(items:poItems)
+                }
             }
 //            cancellations: NSSet?
 //            invoices: NSSet?
-//            items: NSSet?
         }
         .navigationTitle("Purchase Order ID: \(poObj.id)")
     }
@@ -101,6 +124,19 @@ private struct POItems: View
             .font(.title)
         ForEach (items) { item in
             ItemDetailView(itemObj: item)
+        }
+    }
+}
+
+private struct POInvoices: View
+{
+    var invoices: Array<Invoice>
+    var body: some View
+    {
+        Text("Invoices")
+            .font(.title)
+        ForEach (invoices) { invoice in
+            InvoiceDetailView(invoiceObj: invoice)
         }
     }
 }

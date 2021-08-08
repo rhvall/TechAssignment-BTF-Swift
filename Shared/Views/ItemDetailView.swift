@@ -26,11 +26,12 @@ struct ItemDetailView: View
 {
     @State var itemObj: Item
     
-    var body: some View {
+    var body: some View
+    {
         Text("Item ID: \(itemObj.id)").font(.title2)
         Text("Active: \(itemObj.active_flag ? 1 : 0)")
         if let cr = itemObj.created { Text("Created: \(cr, formatter: itemFormatter)") }
-        if let lu = itemObj.last_updated { Text("Last Date: \(lu, formatter: itemFormatter)") }
+        if let lu = itemObj.last_updated { Text("Last Updated: \(lu, formatter: itemFormatter)") }
         Text("Last Updated User Entity ID: \(itemObj.last_updated_user_entity_id)")
         Text("Order Quantity: \(itemObj.ordered_quantity)")
         Text("Product Item ID: \(itemObj.product_item_id)")
@@ -39,9 +40,11 @@ struct ItemDetailView: View
     }
 }
 
-struct ItemDetailView_Previews: PreviewProvider {
+struct ItemDetailView_Previews: PreviewProvider
+{
     static let itemObj = Item()
-    static var previews: some View {
+    static var previews: some View
+    {
         ItemDetailView(itemObj: itemObj)
     }
 }

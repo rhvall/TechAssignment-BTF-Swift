@@ -104,6 +104,20 @@ struct ContentView: View
         item.puchase_orders = poBase
 //        item.cancelled_purchase_orders: Purchase_Order?
         
+        let invoice = Invoice(context: mocContext)
+        invoice.id = lastID
+        invoice.active_flag = true
+        invoice.created = Date()
+        invoice.invoice_number = ": String?-"
+        invoice.last_updated = Date()
+        invoice.last_updated_user_entity_id = 3
+        invoice.receipt_sent_date = Date()
+        invoice.received_status = 4
+        invoice.transient_identifier = "Stringss"
+        invoice.purchase_orders = poBase
+//        invoice.receipts: NSSet?
+
+        
 //            poBase.cancellations: NSSet?
 //            poBase.invoices: NSSet?
 //        return poBase
