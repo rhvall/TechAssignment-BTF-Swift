@@ -34,6 +34,7 @@
 		2C62496626BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */; };
 		2C62496726BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */; };
 		2C63A2E826BFAE4B00F94640 /* ReceiptDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63A2E726BFAE4B00F94640 /* ReceiptDetailView.swift */; };
+		2C63A2F026BFD97600F94640 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63A2EF26BFD97600F94640 /* ItemEditView.swift */; };
 		2C7373C526BF6B91006C5B0E /* PODetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7373C426BF6B91006C5B0E /* PODetailView.swift */; };
 		2CA8820826BF9E7600D23DB7 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA8820726BF9E7600D23DB7 /* ItemDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C63A2E726BFAE4B00F94640 /* ReceiptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailView.swift; sourceTree = "<group>"; };
+		2C63A2EF26BFD97600F94640 /* ItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
 		2C7373C426BF6B91006C5B0E /* PODetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PODetailView.swift; sourceTree = "<group>"; };
 		2CA8820726BF9E7600D23DB7 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 				2CA8820726BF9E7600D23DB7 /* ItemDetailView.swift */,
 				2C4545CD26BFA8C900925683 /* InvoiceDetailView.swift */,
 				2C63A2E726BFAE4B00F94640 /* ReceiptDetailView.swift */,
+				2C63A2EF26BFD97600F94640 /* ItemEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				2C63A2E826BFAE4B00F94640 /* ReceiptDetailView.swift in Sources */,
 				2C3F5CE226BD09BE0099EABC /* ContentView.swift in Sources */,
 				2C31502326BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift in Sources */,
+				2C63A2F026BFD97600F94640 /* ItemEditView.swift in Sources */,
 				2C4545CE26BFA8C900925683 /* InvoiceDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

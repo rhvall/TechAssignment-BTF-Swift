@@ -24,6 +24,7 @@ import SwiftUI
 
 struct PODetailView: View
 {
+    @EnvironmentObject private var appEnv: AppEnvironmentData
     @State var poObj: Purchase_Order
     
     private var poItems: Array<Item>
@@ -71,8 +72,10 @@ struct PODetailView: View
                     POItems(items: poItems)
                 }
             }
-//            cancellations: NSSet?
-//            invoices: NSSet?
+            NavigationLink(destination: ItemEditView(poObj: $poObj))
+            {
+                Label("Add Item to PO", systemImage: "plus")
+            }
         }
         .navigationTitle("Purchase Order ID: \(poObj.id)")
     }
