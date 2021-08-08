@@ -45,7 +45,8 @@ struct ContentView: View
             }
             .onDelete(perform: deletePO)
 //--------------------------------------
-            Button(action: addPO) {
+            NavigationLink(destination: POEditView())
+            {
                 Label("Add Purchase Order", systemImage: "plus")
             }
         }
@@ -56,82 +57,12 @@ struct ContentView: View
         }
 //--------------------------------------
     }
-    
-    private func addPO() {
-        withAnimation {
-            let lastID = Int32(purchaseOrder.first?.id ?? 0)
-            dummyPO(mocContext: mocContext, lastID: lastID)
-            appEnv.sharedPC.save()
-        }
-    }
 
     private func deletePO(offsets: IndexSet) {
         withAnimation {
             offsets.map { purchaseOrder[$0] }.forEach(mocContext.delete)
             appEnv.sharedPC.save()
         }
-    }
-    
-    private func dummyPO(mocContext: NSManagedObjectContext, lastID: Int32)
-    {
-        let poBase = Purchase_Order(context: mocContext)
-        poBase.id = lastID + 1
-        poBase.last_updated = Date()
-        poBase.active_flag = true
-        poBase.approval_status = 2
-        poBase.delivery_note = "mm"
-        poBase.device_key = "mm1"
-        poBase.issue_date = Date()
-        poBase.last_updated = Date()
-        poBase.last_updated_user_entity_id = 43
-        poBase.preferred_delivery_date = Date()
-        poBase.purchase_order_number = "String"
-        poBase.sent_date = Date()
-        poBase.server_timestamp = 449
-        poBase.status = 10
-        poBase.supplier_id = 20
-        
-        let item = Item(context: mocContext)
-        item.active_flag = true
-        item.created = Date()
-        item.id = lastID
-        item.last_updated = Date()
-        item.last_updated_user_entity_id = 32
-        item.ordered_quantity = 3
-        item.product_item_id = 5
-        item.quantity = 10
-        item.transient_identifier = "-:String?"
-        item.puchase_orders = poBase
-//        item.cancelled_purchase_orders: Purchase_Order?
-        
-        let invoice = Invoice(context: mocContext)
-        invoice.id = lastID
-        invoice.active_flag = true
-        invoice.created = Date()
-        invoice.invoice_number = ": String?-"
-        invoice.last_updated = Date()
-        invoice.last_updated_user_entity_id = 3
-        invoice.receipt_sent_date = Date()
-        invoice.received_status = 4
-        invoice.transient_identifier = "Stringss"
-        invoice.purchase_orders = poBase
-        
-        let receipt = Receipt(context: mocContext)
-        receipt.id = lastID
-        receipt.active_flag = true
-        receipt.created = Date()
-        receipt.last_updated = Date()
-        receipt.last_updated_user_entity_id = 484
-        receipt.product_item_id = 939
-        receipt.received_quantity = 919
-        receipt.sent_date = Date()
-        receipt.transient_identifier = "¿¿String??"
-        receipt.invoices = invoice
-        invoice.receipts = [receipt]
-
-        poBase.items = [item]
-        poBase.invoices = [invoice]
-//        return poBase
     }
 }
 

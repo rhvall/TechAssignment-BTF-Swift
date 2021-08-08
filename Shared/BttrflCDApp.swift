@@ -48,13 +48,13 @@ struct BttrflCDApp: App
             NavigationView
             {
                 ContentView()
-                    .environmentObject(appEnv)
                     // It needs to explicitely set the MOC to avoid issues
                     .environment(\.managedObjectContext, appEnv.sharedPC.context())
                     .navigationBarTitle(Text("Technical Assestment"), displayMode: .large)
             }
             // https://stackoverflow.com/questions/65316497/swiftui-navigationview-navigationbartitle-layoutconstraints-issue
             .navigationViewStyle(StackNavigationViewStyle())
+            .environmentObject(appEnv)
         }
         .onChange(of: appEnv.scenePhase) { _ in
             appEnv.sharedPC.save();
