@@ -68,7 +68,7 @@ struct PODetailView: View
                 if (poItems.count > 0)
                 {
                     Divider().background(Color.blue)
-                    POItems(items:poItems)
+                    POItems(items: poItems)
                 }
             }
 //            cancellations: NSSet?
@@ -130,7 +130,7 @@ private struct POItems: View
 
 private struct POInvoices: View
 {
-    var invoices: Array<Invoice>
+    let invoices: Array<Invoice>
     var body: some View
     {
         Text("Invoices")

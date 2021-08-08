@@ -25,8 +25,31 @@ import SwiftUI
 struct InvoiceDetailView: View
 {
     @State var invoiceObj: Invoice
+    
+    private var inReceipts: Array<Receipt>
+    {
+        guard let its = invoiceObj.receipts else
+        {
+            return []
+        }
+        
+        return its.allObjects as! Array<Receipt>
+    }
+    
     var body: some View
     {
+        InvoiceData(invoiceObj: $invoiceObj)
+        if (inReceipts.count > 0) {
+            Divider().background(Color.blue)
+            InvoiceReceipts(receipts: inReceipts)
+        }
+    }
+}
+
+private struct InvoiceData: View
+{
+    @Binding var invoiceObj: Invoice
+    var body: some View {
         Text("Invoice ID: \(invoiceObj.id)").font(.title2)
         Text("Active: \(invoiceObj.active_flag ? 1 : 0)")
         if let cr = invoiceObj.created { Text("Created: \(cr, formatter: itemFormatter)") }
@@ -36,6 +59,18 @@ struct InvoiceDetailView: View
         if let rd = invoiceObj.receipt_sent_date { Text("Receipt sent date: \(rd, formatter: itemFormatter)") }
         Text("Received Status: \(invoiceObj.received_status)")
         if let ti = invoiceObj.transient_identifier { Text("Transient ID: \(ti)") }
+    }
+}
+
+private struct InvoiceReceipts: View
+{
+    let receipts: Array<Receipt>
+    var body: some View {
+        Text("Receipts")
+            .font(.title)
+        ForEach (receipts) { receipt in
+            ReceiptDetailView(receiptObj: receipt)
+        }
     }
 }
 

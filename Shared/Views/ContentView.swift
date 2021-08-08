@@ -100,7 +100,7 @@ struct ContentView: View
         item.ordered_quantity = 3
         item.product_item_id = 5
         item.quantity = 10
-        item.transient_identifier = ": String?"
+        item.transient_identifier = "-:String?"
         item.puchase_orders = poBase
 //        item.cancelled_purchase_orders: Purchase_Order?
         
@@ -115,11 +115,22 @@ struct ContentView: View
         invoice.received_status = 4
         invoice.transient_identifier = "Stringss"
         invoice.purchase_orders = poBase
-//        invoice.receipts: NSSet?
-
         
-//            poBase.cancellations: NSSet?
-//            poBase.invoices: NSSet?
+        let receipt = Receipt(context: mocContext)
+        receipt.id = lastID
+        receipt.active_flag = true
+        receipt.created = Date()
+        receipt.last_updated = Date()
+        receipt.last_updated_user_entity_id = 484
+        receipt.product_item_id = 939
+        receipt.received_quantity = 919
+        receipt.sent_date = Date()
+        receipt.transient_identifier = "¿¿String??"
+        receipt.invoices = invoice
+        invoice.receipts = [receipt]
+
+        poBase.items = [item]
+        poBase.invoices = [invoice]
 //        return poBase
     }
 }
