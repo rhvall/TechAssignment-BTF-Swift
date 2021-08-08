@@ -35,9 +35,7 @@ struct ContentView: View
         List {
 //--------------------------------------
             ForEach(purchaseOrder) { po in
-                NavigationLink(destination: DetailView(),
-                               tag: .DetailPage,
-                               selection: $appEnv.currentPage)
+                NavigationLink(destination: PODetailView(poObj: po))
                 {
                     VStack {
                         Text("PO ID: \(po.id) with #\(po.items!.count) items")
@@ -46,9 +44,6 @@ struct ContentView: View
                 }
             }
             .onDelete(perform: deletePO)
-            .onTapGesture {
-                appEnv.currentPage = .DetailPage
-            }
 //--------------------------------------
             Button(action: addPO) {
                 Label("Add Purchase Order", systemImage: "plus")
@@ -64,10 +59,8 @@ struct ContentView: View
     
     private func addPO() {
         withAnimation {
-            let poBase = Purchase_Order(context: mocContext)
             let lastID = Int32(purchaseOrder.first?.id ?? 0)
-            poBase.id = lastID + 1
-            poBase.last_updated = Date()
+            dummyPO(mocContext: mocContext, lastID: lastID)
             appEnv.sharedPC.save()
         }
     }
@@ -78,9 +71,33 @@ struct ContentView: View
             appEnv.sharedPC.save()
         }
     }
+    
+    private func dummyPO(mocContext: NSManagedObjectContext, lastID: Int32)
+    {
+        let poBase = Purchase_Order(context: mocContext)
+        poBase.id = lastID + 1
+        poBase.last_updated = Date()
+        poBase.active_flag = true
+        poBase.approval_status = 2
+        poBase.delivery_note = "mm"
+        poBase.device_key = "mm1"
+        poBase.issue_date = Date()
+        poBase.last_updated = Date()
+        poBase.last_updated_user_entity_id = 43
+        poBase.preferred_delivery_date = Date()
+        poBase.purchase_order_number = "String"
+        poBase.sent_date = Date()
+        poBase.server_timestamp = 449
+        poBase.status = 10
+        poBase.supplier_id = 20
+//            poBase.cancellations: NSSet?
+//            poBase.invoices: NSSet?
+//            poBase.items: NSSet?
+//        return poBase
+    }
 }
 
-private let itemFormatter: DateFormatter = {
+let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
     formatter.timeStyle = .medium
