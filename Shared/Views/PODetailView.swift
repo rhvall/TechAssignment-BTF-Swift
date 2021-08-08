@@ -25,7 +25,7 @@ import SwiftUI
 struct PODetailView: View
 {
     @EnvironmentObject private var appEnv: AppEnvironmentData
-    @State var poObj: Purchase_Order
+    @ObservedObject var poObj: Purchase_Order
     
     private var poItems: Array<Item>
     {
@@ -53,9 +53,9 @@ struct PODetailView: View
         {
             Group
             {
-                POApprovalStatus(poObj: $poObj)
-                POKeyDates(poObj: $poObj)
-                POStringData(poObj: $poObj)
+                POApprovalStatus(poObj: poObj)
+                POKeyDates(poObj: poObj)
+                POStringData(poObj: poObj)
             }
             Group
             {
@@ -72,18 +72,19 @@ struct PODetailView: View
                     POItems(items: poItems)
                 }
             }
-            NavigationLink(destination: ItemEditView(poObj: $poObj))
+            NavigationLink(destination: ItemEditView(poObj: poObj))
             {
                 Label("Add Item to PO", systemImage: "plus")
             }
         }
         .navigationTitle("Purchase Order ID: \(poObj.id)")
+        
     }
 }
 
 private struct POKeyDates: View
 {
-    @Binding var poObj: Purchase_Order
+    @ObservedObject var poObj: Purchase_Order
     var body: some View
     {
         if let iD = poObj.issue_date { Text("Issue Date: \(iD, formatter: itemFormatter)") }
@@ -95,7 +96,7 @@ private struct POKeyDates: View
 
 private struct POStringData: View
 {
-    @Binding var poObj: Purchase_Order
+    @ObservedObject var poObj: Purchase_Order
     var body: some View
     {
         if let dn = poObj.delivery_note { Text("Delivery Note: \(dn)") }
@@ -106,7 +107,7 @@ private struct POStringData: View
 
 private struct POApprovalStatus: View
 {
-    @Binding var poObj: Purchase_Order
+    @ObservedObject var poObj: Purchase_Order
     var body: some View
     {
         Text("Active: \(poObj.active_flag ? 1 : 0)")

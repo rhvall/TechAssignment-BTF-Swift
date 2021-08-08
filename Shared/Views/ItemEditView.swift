@@ -39,7 +39,7 @@ struct ValidatedItemData
 
 struct ItemEditView: View
 {
-    @Binding var poObj: Purchase_Order
+    @ObservedObject var poObj: Purchase_Order
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var appEnv: AppEnvironmentData
@@ -137,16 +137,17 @@ struct ItemEditView: View
         item.quantity = itmData.quantity
         item.transient_identifier = itmData.transientID
         item.puchase_orders = poObj
+        poObj.addToItems(item)
         appEnv.sharedPC.save()
     }
 }
 
 struct ItemEditView_Previews: PreviewProvider
 {
-    @State static var poObj = Purchase_Order()
+    static var poObj = Purchase_Order()
     static var previews: some View
     {
-        ItemEditView(poObj: $poObj)
+        ItemEditView(poObj: poObj)
     }
 }
 
