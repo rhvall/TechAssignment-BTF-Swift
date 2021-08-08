@@ -25,14 +25,28 @@ import SwiftUI
 struct PODetailView: View
 {
     @State var poObj: Purchase_Order
+    
+    private var poItems: Array<Item> {
+        guard let its = poObj.items else {
+            return []
+        }
+        
+        return its.allObjects as! Array<Item>
+    }
 
     var body: some View
     {
         List
         {
-            POApprovalStatus(poObj: $poObj)
-            POKeyDates(poObj: $poObj)
-            POStringData(poObj: $poObj)
+            Group {
+                POApprovalStatus(poObj: $poObj)
+                POKeyDates(poObj: $poObj)
+                POStringData(poObj: $poObj)
+            }
+            Divider().background(Color.blue)
+            Group {
+                if (poItems.count > 0) { POItems(items:poItems) }
+            }
 //            cancellations: NSSet?
 //            invoices: NSSet?
 //            items: NSSet?
@@ -75,6 +89,19 @@ private struct POApprovalStatus: View
         Text("Server Timestamp: \(poObj.server_timestamp)")
         Text("Status: \(Int(poObj.status))")
         Text("Supplier ID: \(poObj.supplier_id)")
+    }
+}
+
+private struct POItems: View
+{
+    var items: Array<Item>
+    var body: some View
+    {
+        Text("Items")
+            .font(.title)
+        ForEach (items) { item in
+            ItemDetailView(itemObj: item)
+        }
     }
 }
 

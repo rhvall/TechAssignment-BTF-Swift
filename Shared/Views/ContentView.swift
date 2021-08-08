@@ -90,9 +90,22 @@ struct ContentView: View
         poBase.server_timestamp = 449
         poBase.status = 10
         poBase.supplier_id = 20
+        
+        let item = Item(context: mocContext)
+        item.active_flag = true
+        item.created = Date()
+        item.id = lastID
+        item.last_updated = Date()
+        item.last_updated_user_entity_id = 32
+        item.ordered_quantity = 3
+        item.product_item_id = 5
+        item.quantity = 10
+        item.transient_identifier = ": String?"
+        item.puchase_orders = poBase
+//        item.cancelled_purchase_orders: Purchase_Order?
+        
 //            poBase.cancellations: NSSet?
 //            poBase.invoices: NSSet?
-//            poBase.items: NSSet?
 //        return poBase
     }
 }

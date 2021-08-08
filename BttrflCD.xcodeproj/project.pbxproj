@@ -33,6 +33,7 @@
 		2C62496626BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */; };
 		2C62496726BE992200DB22C9 /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */; };
 		2C7373C526BF6B91006C5B0E /* PODetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7373C426BF6B91006C5B0E /* PODetailView.swift */; };
+		2CA8820826BF9E7600D23DB7 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA8820726BF9E7600D23DB7 /* ItemDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		2C62496226BE992200DB22C9 /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C62496326BE992200DB22C9 /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C7373C426BF6B91006C5B0E /* PODetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PODetailView.swift; sourceTree = "<group>"; };
+		2CA8820726BF9E7600D23DB7 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				2C3F5CB526BD09BC0099EABC /* ContentView.swift */,
 				2C7373C426BF6B91006C5B0E /* PODetailView.swift */,
+				2CA8820726BF9E7600D23DB7 /* ItemDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			files = (
 				2C3B27F826BE69230051488C /* Item+CoreDataProperties.swift in Sources */,
 				2C31501726BEA0B400E95CBF /* Invoice+CoreDataClass.swift in Sources */,
+				2CA8820826BF9E7600D23DB7 /* ItemDetailView.swift in Sources */,
 				2C3B27F726BE69230051488C /* Item+CoreDataClass.swift in Sources */,
 				2C62496426BE992200DB22C9 /* Receipt+CoreDataClass.swift in Sources */,
 				2C3F5CE026BD09BE0099EABC /* BttrflCDApp.swift in Sources */,
