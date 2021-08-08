@@ -14,3 +14,11 @@ Screenshots of the result:
 ![Purchase Order validation](Screenshots/Simulator3.png)
 
 ![Item Added](Screenshots/Simulator4.png)
+
+Future work:
+- Multhreaded CoreData
+- Localized Strings
+- Intergration with Mac/iPad/tvOS
+- A comprehensive data verification
+- Conditional merge of remote JSON data
+- Swift async
