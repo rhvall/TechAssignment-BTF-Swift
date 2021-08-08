@@ -99,10 +99,9 @@
 		2C3F5CB126BD09BC0099EABC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2CA8820426BF9E0F00D23DB7 /* Views */,
 				2C55411B26BE5147008D37AC /* CoreData */,
 				2C3F5CB426BD09BC0099EABC /* BttrflCDApp.swift */,
-				2C3F5CB526BD09BC0099EABC /* ContentView.swift */,
-				2C7373C426BF6B91006C5B0E /* PODetailView.swift */,
 				2C3F5CB726BD09BE0099EABC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -158,6 +157,15 @@
 				2C31502026BEA7FA00E95CBF /* Purchase_Order+CoreDataProperties.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2CA8820426BF9E0F00D23DB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C3F5CB526BD09BC0099EABC /* ContentView.swift */,
+				2C7373C426BF6B91006C5B0E /* PODetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
