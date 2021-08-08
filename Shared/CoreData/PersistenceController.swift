@@ -52,9 +52,7 @@ struct PersistenceController {
                 storeDescription.shouldAddStoreAsynchronously = true
                 storeDescription.url = URL(fileURLWithPath: "/dev/null")
                 storeDescription.shouldAddStoreAsynchronously = false
-                
             }
-//            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -75,6 +73,11 @@ struct PersistenceController {
         })
     }
     
+    func context() -> NSManagedObjectContext
+    {
+        return container.viewContext
+    }
+    
     func save() {
         let context = container.viewContext
 
@@ -89,10 +92,13 @@ struct PersistenceController {
     }
 }
 
+// https://stackoverflow.com/questions/52555913/save-complex-json-to-core-data-in-swift
+// This extension helps to associate a context with a CodingUserInfoKey
 extension CodingUserInfoKey {
     static let context = CodingUserInfoKey(rawValue: "context")!
 }
 
+// With this, it is possible to use the MOC to decode JSON objects
 extension JSONDecoder {
     convenience init(context: NSManagedObjectContext) {
         self.init()
@@ -101,6 +107,7 @@ extension JSONDecoder {
 }
 
 // https://useyourloaf.com/blog/swift-codable-with-custom-dates/
+// Needed to parse Dates with the full iso8601 format object inside a JSON file
 extension DateFormatter {
   static let iso8601Full: DateFormatter = {
     let formatter = DateFormatter()

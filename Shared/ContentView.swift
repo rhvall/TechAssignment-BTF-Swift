@@ -22,42 +22,33 @@
 import SwiftUI
 import CoreData
 
-struct VerticalLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        VStack {
-            configuration.icon
-            configuration.title
-        }
-    }
-}
-
-struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
+struct ContentView: View
+{
+    @Environment(\.managedObjectContext) private var mocContext
+    @EnvironmentObject private var appEnv: AppEnvironmentData
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Purchase_Order.id, ascending: false)],
         animation: .default)
     private var purchaseOrder: FetchedResults<Purchase_Order>
-
+    
     var body: some View {
         List {
 //--------------------------------------
-            Label {
-                Text("Technical Assestment")
-            } icon: {
-                Image(systemName: "keyboard")
-                    .foregroundColor(Color.blue)
-            }
-            .labelStyle(VerticalLabelStyle())
-            .font(.largeTitle)
-//--------------------------------------
             ForEach(purchaseOrder) { po in
-                VStack {
-                    Text("PO ID: \(po.id) with #\(po.items!.count) items")
-                    Text("Last update: \(po.last_updated!, formatter: itemFormatter)")
+                NavigationLink(destination: DetailView(),
+                               tag: .DetailPage,
+                               selection: $appEnv.currentPage)
+                {
+                    VStack {
+                        Text("PO ID: \(po.id) with #\(po.items!.count) items")
+                        Text("Last update: \(po.last_updated!, formatter: itemFormatter)")
+                    }
                 }
             }
             .onDelete(perform: deletePO)
+            .onTapGesture {
+                appEnv.currentPage = .DetailPage
+            }
 //--------------------------------------
             Button(action: addPO) {
                 Label("Add Purchase Order", systemImage: "plus")
@@ -73,34 +64,18 @@ struct ContentView: View {
     
     private func addPO() {
         withAnimation {
-            let poBase = Purchase_Order(context: viewContext)
+            let poBase = Purchase_Order(context: mocContext)
             let lastID = Int32(purchaseOrder.first?.id ?? 0)
             poBase.id = lastID + 1
             poBase.last_updated = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            appEnv.sharedPC.save()
         }
     }
 
     private func deletePO(offsets: IndexSet) {
         withAnimation {
-            offsets.map { purchaseOrder[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            offsets.map { purchaseOrder[$0] }.forEach(mocContext.delete)
+            appEnv.sharedPC.save()
         }
     }
 }
