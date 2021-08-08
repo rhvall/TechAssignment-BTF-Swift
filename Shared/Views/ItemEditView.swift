@@ -150,15 +150,3 @@ struct ItemEditView_Previews: PreviewProvider
         ItemEditView(poObj: poObj)
     }
 }
-
-//active_flag: Bool
-//created: Date?
-//id: Int32
-//last_updated: Date?
-//last_updated_user_entity_id: Int32
-//ordered_quantity: Int32
-//product_item_id: Int32
-//quantity: Int32
-//transient_identifier: String?
-//cancelled_purchase_orders: Purchase_Order?
-//puchase_orders: Purchase_Order?

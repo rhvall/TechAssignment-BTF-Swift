@@ -151,5 +151,3 @@ struct DetailView_Previews: PreviewProvider {
         PODetailView(poObj: po)
     }
 }
-
-

@@ -45,7 +45,8 @@ struct ContentView: View
             }
             .onDelete(perform: deletePO)
 //--------------------------------------
-            Button(action: addPO) {
+            NavigationLink(destination: POEditView())
+            {
                 Label("Add Purchase Order", systemImage: "plus")
             }
         }
