@@ -55,9 +55,6 @@ struct BttrflCDApp: App
             // https://stackoverflow.com/questions/65316497/swiftui-navigationview-navigationbartitle-layoutconstraints-issue
             .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(appEnv)
-            .onAppear {
-                ContentLoader.loadJSONFromNetwork(env: appEnv)
-            }
         }
         .onChange(of: appEnv.scenePhase) { _ in
             appEnv.sharedPC.save();
